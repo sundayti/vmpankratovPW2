@@ -8,12 +8,14 @@
 import UIKit
 
 protocol BusinessLogic {
-    func loadStart(_ request: WishMakerModel.BackgroundColor.Request)
+    func loadBackground(_ request: WishMakerModel.BackgroundColor.Request)
+    
+    func loadWishStoring()
 }
 
 
 protocol PresentationLogic {
-    func presentStart(_ response: WishMakerModel.BackgroundColor.Response)
+    func presenBackground(_ response: WishMakerModel.BackgroundColor.Response)
     
-    func routeTo()
+    func routeToWishStoring()
 }

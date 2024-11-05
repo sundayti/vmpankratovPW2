@@ -11,22 +11,22 @@ import UIKit
 final class WishMakerViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Constans
-    internal let interactor: BusinessLogic
-    internal let interfaceView: UIView = UIView()
-    internal let labelView: UIView = UIView()
-    internal let feedbackGenerator: UIImpactFeedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
-    internal let colorChangesStack: UIStackView = UIStackView()
-    internal let inputField: UITextField = UITextField()
-    internal let hideButton: UIButton = UIButton()
-    internal let mainTitle: UILabel = UILabel()
-    internal let descriptionLabel: UILabel = UILabel()
-    internal let addWishButton: UIButton = UIButton(type: .system)
+    let interactor: BusinessLogic
+    let interfaceView: UIView = UIView()
+    let labelView: UIView = UIView()
+    let feedbackGenerator: UIImpactFeedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+    let colorChangesStack: UIStackView = UIStackView()
+    let inputField: UITextField = UITextField()
+    let hideButton: UIButton = UIButton()
+    let mainTitle: UILabel = UILabel()
+    let descriptionLabel: UILabel = UILabel()
+    let addWishButton: UIButton = UIButton(type: .system)
     
     // MARK: - Variebles
-    internal var customKeyboard: CustomKeyboardView?
-    internal var sliders = [CustomSlider]()
-    internal var isHidden: Bool = false
-    internal var segmentControl: CustomSegmentedControl!
+    var customKeyboard: CustomKeyboardView?
+    var sliders = [CustomSlider]()
+    var isHidden: Bool = false
+    var segmentControl: CustomSegmentedControl!
     
     // MARK: - Initialization
     init(interactor: BusinessLogic) {
@@ -69,7 +69,7 @@ final class WishMakerViewController: UIViewController, UITextFieldDelegate {
         configureLabelView()
         configureAddWishButton()
         configureInterfaceView()
-        configureZStack()
+        configureColorChangesStack()
         configureTitle()
         configureDescription()
         configureSlider()
@@ -110,6 +110,9 @@ final class WishMakerViewController: UIViewController, UITextFieldDelegate {
             
             UIView.animate(withDuration: Constants.animateDuration) {
                 self.view.subviews.forEach { $0.alpha = 1 }
+            }
+            if UIScreen.main.bounds.width > UIScreen.main.bounds.height {
+                addWishButton.isHidden = true
             }
         }
     }

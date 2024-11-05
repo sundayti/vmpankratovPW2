@@ -22,14 +22,14 @@ extension WishMakerViewController {
         self.inputField.resignFirstResponder()
         
         UIView.animate(withDuration: Constants.animateDuration, animations: {
-            self.colorChangesStack.arrangedSubviews.forEach { $0.alpha = 0 } // Скрытие
+            self.colorChangesStack.arrangedSubviews.forEach { $0.alpha = 0 }
             self.colorChangesStack.arrangedSubviews[oldIndex].isHidden = true
         }) { _ in
             self.colorChangesStack.layoutIfNeeded()
             
             UIView.animate(withDuration: Constants.animateDuration, animations: {
                 self.showSubview(at: index) // Показываем текущий элемент
-                self.colorChangesStack.arrangedSubviews.forEach { $0.alpha = 1 } // Плавно показываем
+                self.colorChangesStack.arrangedSubviews.forEach { $0.alpha = 1 }
             })
         }
     }

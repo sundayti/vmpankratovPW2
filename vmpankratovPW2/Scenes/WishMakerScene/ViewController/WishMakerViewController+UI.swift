@@ -44,8 +44,8 @@ extension WishMakerViewController {
         descriptionLabel.pinBottom(to: labelView.bottomAnchor)
     }
     
-    // MARK: - ZStack Configuration
-    internal func configureZStack() {
+    // MARK: - ColorChangesStack Configuration
+    internal func configureColorChangesStack() {
         resetArrangedSubviews(for: colorChangesStack)
         colorChangesStack.configureStackView(axis: .vertical, spacing: Constants.stackSpace, alignment: .fill)
         
@@ -60,7 +60,7 @@ extension WishMakerViewController {
         view.addSubview(addWishButton)
         addWishButton.setHeight(Constants.buttonHeight)
         addWishButton.pinHorizontal(to: view, Constants.pinHorizontal)
-        addWishButton.pinBottom(to: view.safeAreaLayoutGuide.bottomAnchor, 5)
+        addWishButton.pinBottom(to: view.safeAreaLayoutGuide.bottomAnchor, Constants.addWishBottom)
         
         addWishButton.backgroundColor = .white
         addWishButton.setTitle(Constants.addButtonTitle, for: .normal)
@@ -68,6 +68,8 @@ extension WishMakerViewController {
         addWishButton.layer.addBorder()
         addWishButton.layer.cornerRadius = Constants.radius
         addWishButton.titleLabel?.font = .systemFont(ofSize: Constants.buttonTextFontSize)
+        
+        addWishButton.addTarget(self, action: #selector(addWishButtonPressed), for: .touchUpInside)
     }
     
     internal func configureSlider() {
@@ -122,7 +124,7 @@ extension WishMakerViewController {
     
     internal func configureHideButton() {
         hideButton.setTitle(Constants.hideButtonTitle, for: .normal)
-        hideButton.configureCustomButton(target: self, action: #selector(switchValueChanged))
+        hideButton.configureCustomButton(target: self, action: #selector(hideButtonValueChanged))
         hideButton.titleLabel?.pinHorizontal(to: hideButton, Constants.pinHorizontal)
         hideButton.titleLabel?.font = .systemFont(ofSize: Constants.descriptionFontSize)
         hideButton.layer.cornerRadius = Constants.hideButtonRadius
@@ -161,59 +163,27 @@ extension WishMakerViewController {
         inputField.text = hex
     }
     
-    @objc private func switchValueChanged() {
+    @objc
+    private func hideButtonValueChanged() {
         isHidden.toggle()
         UIView.animate(withDuration: Constants.animateDuration) {
             self.view.subviews.forEach { $0.alpha = self.isHidden ? 0 : 1 }
         } completion: { _ in
             self.view.subviews.forEach { $0.isHidden = self.isHidden }
         }
+        if UIScreen.main.bounds.width > UIScreen.main.bounds.height {
+            addWishButton.isHidden = true
+        }
     }
     
-    @objc private func randomizeColor() {
+    @objc
+    private func randomizeColor() {
         let color = UIColor.random()
         UIView.animate(withDuration: Constants.animateDuration) { self.view.backgroundColor = color }
     }
-}
-
-// MARK: - Custom Configurations for UI Elements
-internal extension UIView {
-    func pinHorizontalEdges(to view: UIView) {
-        self.pinLeft(to: view.leadingAnchor)
-        self.pinRight(to: view.trailingAnchor)
-    }
-}
-
-private extension CALayer {
-    func addBorder(width: CGFloat = 1, color: UIColor = .black) {
-        self.borderWidth = width
-        self.borderColor = color.cgColor
-    }
-}
-
-private extension UIStackView {
-    func configureStackView(axis: NSLayoutConstraint.Axis, spacing: CGFloat, alignment: UIStackView.Alignment) {
-        self.axis = axis
-        self.spacing = spacing
-        self.alignment = alignment
-    }
-}
-
-private extension UIButton {
-    func configureCustomButton(target: Any?, action: Selector) {
-        self.backgroundColor = .white
-        self.layer.addBorder()
-        self.layer.cornerRadius = Constants.radius
-        self.titleLabel?.font = .systemFont(ofSize: Constants.buttonTextFontSize)
-        self.setTitleColor(.black, for: .normal)
-        self.setHeight(Constants.buttonHeight)
-        self.addTarget(target, action: action, for: .touchUpInside)
-    }
-}
-
-private extension CustomSegmentedControl {
-    func configureSegmentedControl() {
-        self.layer.addBorder()
-        self.layer.cornerRadius = Constants.radius
+    
+    @objc
+    private func addWishButtonPressed() {
+        interactor.loadWishStoring()
     }
 }

@@ -8,13 +8,14 @@
 import UIKit
 
 final class WishMakerInteractor: BusinessLogic {
+    
     private let presenter: PresentationLogic
     
     init(presenter: PresentationLogic) {
         self.presenter = presenter
     }
     
-    func loadStart(_ request: WishMakerModel.BackgroundColor.Request) {
+    func loadBackground(_ request: WishMakerModel.BackgroundColor.Request) {
         let red = request.red
         let green = request.green
         let blue = request.blue
@@ -26,6 +27,10 @@ final class WishMakerInteractor: BusinessLogic {
             alpha: 1
         )
         
-        presenter.presentStart(WishMakerModel.BackgroundColor.Response(color: color))
+        presenter.presenBackground(WishMakerModel.BackgroundColor.Response(color: color))
+    }
+    
+    func loadWishStoring() {
+        presenter.routeToWishStoring()
     }
 }

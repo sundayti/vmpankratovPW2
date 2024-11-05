@@ -42,19 +42,35 @@ extension WishMakerViewController {
     
     func setupSliderActions(_ sliders: [CustomSlider]) {
         sliders[0].valueChanged = { [weak self] red in
-            self!.interactor.loadStart(WishMakerModel.BackgroundColor.Request(red: Float(red),
-                                                                              green: sliders[1].slider.value,
-                                                                              blue: sliders[2].slider.value))
+            self!.interactor.loadBackground(
+                WishMakerModel.BackgroundColor.Request(
+                    red: Float(red),
+                    green: sliders[1].slider.value,
+                    blue: sliders[2].slider.value
+                )
+            )
         }
         sliders[1].valueChanged = { [weak self] green in
-            self!.interactor.loadStart(WishMakerModel.BackgroundColor.Request(red: sliders[0].slider.value,
-                                                                              green: Float(green),
-                                                                              blue: sliders[2].slider.value))
+            self!.interactor.loadBackground(
+                WishMakerModel.BackgroundColor.Request(
+                    red: sliders[0].slider.value,
+                    green: Float(green),
+                    blue: sliders[2].slider.value
+                )
+            )
         }
         sliders[2].valueChanged = { [weak self] blue in
-            self!.interactor.loadStart(WishMakerModel.BackgroundColor.Request(red: sliders[0].slider.value,
-                                                                              green: sliders[1].slider.value,
-                                                                              blue: Float(blue)))
+            self!.interactor
+                .loadBackground(
+                    WishMakerModel.BackgroundColor
+                        .Request(
+                        red: sliders[0].slider.value,
+                        green: sliders[1].slider.value,
+                        blue: Float(
+                            blue
+                        )
+                    )
+                )
         }
     }
     

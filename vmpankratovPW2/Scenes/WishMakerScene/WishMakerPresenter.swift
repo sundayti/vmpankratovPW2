@@ -10,12 +10,12 @@ import UIKit
 final class WishMakerPresenter: PresentationLogic {
     internal weak var view: WishMakerViewController?
     
-    func presentStart(_ response: WishMakerModel.BackgroundColor.Response) {
+    func presenBackground(_ response: WishMakerModel.BackgroundColor.Response) {
         let color = response.color
         view?.updateBackgroundColor(color)
     }
     
-    func routeTo() {
-        view?.navigationController?.pushViewController(UIViewController(), animated: true)
+    func routeToWishStoring() {
+        view?.present(WishStoringViewController(), animated: true)
     }
 }
