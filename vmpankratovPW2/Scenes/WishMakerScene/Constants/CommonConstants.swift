@@ -10,8 +10,10 @@ enum Constants {
     static let sliderMin: Double = 0
     static let sliderMax: Double = 1
     
-    static let interfaceViewBottom: CGFloat = -40
+    static let interfaceViewBottom: CGFloat = -10
     static let interfaceViewRighAtHorizontal: CGFloat = 5
+    
+    static let addButtonTitle: String = "My wishes"
     
     static let labelViewTop: CGFloat = 30
     static let labelViewLeftAtHorizontal: CGFloat = 5

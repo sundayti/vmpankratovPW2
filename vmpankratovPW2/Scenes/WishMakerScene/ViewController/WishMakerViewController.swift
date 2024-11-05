@@ -12,14 +12,15 @@ final class WishMakerViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Constans
     internal let interactor: BusinessLogic
-    internal let interfaceView = UIView()
-    internal let labelView = UIView()
-    internal let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
-    internal let colorChangesStack = UIStackView()
-    internal let inputField = UITextField()
-    internal let hideButton = UIButton()
-    internal let mainTitle = UILabel()
-    internal let descriptionLabel = UILabel()
+    internal let interfaceView: UIView = UIView()
+    internal let labelView: UIView = UIView()
+    internal let feedbackGenerator: UIImpactFeedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+    internal let colorChangesStack: UIStackView = UIStackView()
+    internal let inputField: UITextField = UITextField()
+    internal let hideButton: UIButton = UIButton()
+    internal let mainTitle: UILabel = UILabel()
+    internal let descriptionLabel: UILabel = UILabel()
+    internal let addWishButton: UIButton = UIButton(type: .system)
     
     // MARK: - Variebles
     internal var customKeyboard: CustomKeyboardView?
@@ -66,6 +67,7 @@ final class WishMakerViewController: UIViewController, UITextFieldDelegate {
     private func configureUI() {
         view.backgroundColor = UIColor.random()
         configureLabelView()
+        configureAddWishButton()
         configureInterfaceView()
         configureZStack()
         configureTitle()

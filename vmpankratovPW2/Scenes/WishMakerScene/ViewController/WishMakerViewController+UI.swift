@@ -12,7 +12,7 @@ extension WishMakerViewController {
     // MARK: - Interface Configuration
     internal func configureInterfaceView() {
         view.addSubview(interfaceView)
-        interfaceView.pinBottom(to: view.bottomAnchor, -Constants.interfaceViewBottom)
+        interfaceView.pinBottom(to: addWishButton.topAnchor, -Constants.interfaceViewBottom)
         interfaceView.pinHorizontalEdges(to: view)
     }
     
@@ -56,6 +56,20 @@ extension WishMakerViewController {
     }
     
     // MARK: - Slider, Segmented Control, HEX Input, and Random Button Configurations
+    internal func configureAddWishButton() {
+        view.addSubview(addWishButton)
+        addWishButton.setHeight(Constants.buttonHeight)
+        addWishButton.pinHorizontal(to: view, Constants.pinHorizontal)
+        addWishButton.pinBottom(to: view.safeAreaLayoutGuide.bottomAnchor, 5)
+        
+        addWishButton.backgroundColor = .white
+        addWishButton.setTitle(Constants.addButtonTitle, for: .normal)
+        addWishButton.setTitleColor(.systemPink, for: .normal)
+        addWishButton.layer.addBorder()
+        addWishButton.layer.cornerRadius = Constants.radius
+        addWishButton.titleLabel?.font = .systemFont(ofSize: Constants.buttonTextFontSize)
+    }
+    
     internal func configureSlider() {
         let stack = createStackView()
         sliders = createSliders()
