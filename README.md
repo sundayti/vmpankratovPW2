@@ -1,3 +1,4 @@
+# P.S. Случайно сделал Massive View Controller, к HW 4 исправлю :))
 # Ответы на вопросы дз2
 ## What issues prevent us from using storyboards in real projects?
 Storyboard ограничивае возможности переиспользования кода, что критично для крупных проектов. 
