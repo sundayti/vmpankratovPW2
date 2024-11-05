@@ -17,7 +17,9 @@ final class CustomInputField: UIView {
     init(title: String, inputField: UITextField) {
         super.init(frame: .zero)
         titleView.text = title
+        titleView.textColor = .black
         self.inputField = inputField
+        inputField.textColor = .black
         configureUI()
     }
     

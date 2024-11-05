@@ -31,9 +31,7 @@ final class AddWishCell: UITableViewCell, UITextViewDelegate {
         static let addButtonH: CGFloat = 20
     }
     static let reuseId: String = "AddWishCell"
-    
-    var addWish: ((String) -> Void)?
-    
+        
     private let wishInputTextView: UITextView = {
         let textView = UITextView()
         textView.layer.addBorder()
@@ -60,6 +58,8 @@ final class AddWishCell: UITableViewCell, UITextViewDelegate {
         button.setHeight(40)
         return button
     }()
+    
+    var addWish: ((String) -> Void)?
     
     // MARK: - Lifecycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

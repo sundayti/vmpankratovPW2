@@ -20,6 +20,7 @@ final class CustomSegmentedControl: UIView {
         super.init(frame: .zero)
         titleView.text = title
         titleView.font = .systemFont(ofSize: SegmentedControlConstants.fontSize)
+        titleView.textColor = .black
         segmentedControl.insertSegment(withTitle: items[0], at: 0, animated: false)
         for index in 1..<items.count {
             segmentedControl.insertSegment(withTitle: items[index], at: index, animated: false)

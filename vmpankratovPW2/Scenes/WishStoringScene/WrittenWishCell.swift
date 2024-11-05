@@ -24,6 +24,7 @@ final class WrittenWishCell: UITableViewCell {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = .systemFont(ofSize: Constants.labelFontSize)
+        label.textColor = .black
         return label
     }()
     
