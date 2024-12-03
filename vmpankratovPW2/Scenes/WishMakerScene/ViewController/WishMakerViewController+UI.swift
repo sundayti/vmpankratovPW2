@@ -86,7 +86,7 @@ extension WishMakerViewController {
         scheduleWishesButton.setHeight(Constants.buttonHeight)
         
         scheduleWishesButton.backgroundColor = .white
-        scheduleWishesButton.setTitle("Ygab", for: .normal)
+        scheduleWishesButton.setTitle("Shedule wish granting", for: .normal)
         scheduleWishesButton.setTitleColor(.systemPink, for: .normal)
         scheduleWishesButton.layer.addBorder()
         scheduleWishesButton.layer.cornerRadius = Constants.radius
@@ -208,5 +208,11 @@ extension WishMakerViewController {
     @objc
     private func addWishButtonPressed() {
         interactor.loadWishStoring()
+    }
+    
+    @objc private func scheduleWishesButtonPressed() {
+        let vc = WishCalendarViewController()
+        vc.currentColor = view.backgroundColor ?? .white
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
