@@ -27,7 +27,7 @@ extension WishMakerViewController {
             removeSecondSubviewFromZStack()
             segmentControl.removeSegment(at: 1)
         }
-        addWishButton.isHidden = true
+        actionStack.isHidden = true
         interfaceView.pinCenterY(to: view)
         interfaceView.pinRight(to: view.centerXAnchor, Constants.interfaceViewRighAtHorizontal)
         interfaceView.pinLeft(to: view.safeAreaLayoutGuide.leadingAnchor)
@@ -46,8 +46,8 @@ extension WishMakerViewController {
             colorChangesStack.arrangedSubviews[1].isHidden = true
             segmentControl.insertSegment(withTitle: SegmentedControlConstants.secondTitle, at: 1)
         }
-        addWishButton.isHidden = false
-        interfaceView.pinBottom(to: addWishButton.topAnchor, -Constants.interfaceViewBottom)
+        actionStack.isHidden = false
+        interfaceView.pinBottom(to: actionStack.topAnchor, -Constants.interfaceViewBottom)
         interfaceView.pinHorizontalEdges(to: view)
         
         labelView.pinTop(to: view.safeAreaLayoutGuide.topAnchor, Constants.labelViewTop)
