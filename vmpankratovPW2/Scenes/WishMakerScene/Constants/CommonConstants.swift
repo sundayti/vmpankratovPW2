@@ -16,6 +16,9 @@ enum Constants {
     static let addButtonTitle: String = "My wishes"
     static let addWishBottom: CGFloat = 5
     
+    static let stackBottom: CGFloat = 20
+    static let stackLeading: CGFloat = 20
+    
     static let labelViewTop: CGFloat = 30
     static let labelViewLeftAtHorizontal: CGFloat = 5
     
