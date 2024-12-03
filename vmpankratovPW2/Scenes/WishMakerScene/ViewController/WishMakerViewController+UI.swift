@@ -12,7 +12,7 @@ extension WishMakerViewController {
     // MARK: - Interface Configuration
     internal func configureInterfaceView() {
         view.addSubview(interfaceView)
-        interfaceView.pinBottom(to: addWishButton.topAnchor, -Constants.interfaceViewBottom)
+        interfaceView.pinBottom(to: actionStack.topAnchor, -Constants.interfaceViewBottom)
         interfaceView.pinHorizontalEdges(to: view)
     }
     
@@ -57,10 +57,7 @@ extension WishMakerViewController {
     
     // MARK: - Slider, Segmented Control, HEX Input, and Random Button Configurations
     internal func configureAddWishButton() {
-        view.addSubview(addWishButton)
         addWishButton.setHeight(Constants.buttonHeight)
-        addWishButton.pinHorizontal(to: view, Constants.pinHorizontal)
-        addWishButton.pinBottom(to: view.safeAreaLayoutGuide.bottomAnchor, Constants.addWishBottom)
         
         addWishButton.backgroundColor = .white
         addWishButton.setTitle(Constants.addButtonTitle, for: .normal)
@@ -70,6 +67,32 @@ extension WishMakerViewController {
         addWishButton.titleLabel?.font = .systemFont(ofSize: Constants.buttonTextFontSize)
         
         addWishButton.addTarget(self, action: #selector(addWishButtonPressed), for: .touchUpInside)
+    }
+    
+    internal func configureActionStack() {
+        actionStack.axis = .vertical
+        view.addSubview(actionStack)
+        actionStack.spacing = Constants.stackSpace
+        for button in [addWishButton, scheduleWishesButton] {
+        actionStack.addArrangedSubview(button)
+        }
+        configureAddWishButton()
+        configureSheduleMission()
+        actionStack.pinBottom(to: view, Constants.stackBottom)
+        actionStack.pinHorizontal(to: view, Constants.stackLeading)
+    }
+    
+    internal func configureSheduleMission() {
+        scheduleWishesButton.setHeight(Constants.buttonHeight)
+        
+        scheduleWishesButton.backgroundColor = .white
+        scheduleWishesButton.setTitle("Ygab", for: .normal)
+        scheduleWishesButton.setTitleColor(.systemPink, for: .normal)
+        scheduleWishesButton.layer.addBorder()
+        scheduleWishesButton.layer.cornerRadius = Constants.radius
+        scheduleWishesButton.titleLabel?.font = .systemFont(ofSize: Constants.buttonTextFontSize)
+        
+        scheduleWishesButton.addTarget(self, action: #selector(addWishButtonPressed), for: .touchUpInside)
     }
     
     internal func configureSlider() {
