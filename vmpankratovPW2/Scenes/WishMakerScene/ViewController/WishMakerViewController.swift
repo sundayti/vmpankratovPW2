@@ -21,6 +21,8 @@ final class WishMakerViewController: UIViewController, UITextFieldDelegate {
     let mainTitle: UILabel = UILabel()
     let descriptionLabel: UILabel = UILabel()
     let addWishButton: UIButton = UIButton(type: .system)
+    let scheduleWishesButton: UIButton = UIButton(type: .system)
+    let actionStack: UIStackView = UIStackView()
     
     // MARK: - Variebles
     var customKeyboard: CustomKeyboardView?
@@ -67,7 +69,7 @@ final class WishMakerViewController: UIViewController, UITextFieldDelegate {
     private func configureUI() {
         view.backgroundColor = UIColor.random()
         configureLabelView()
-        configureAddWishButton()
+        configureActionStack()
         configureInterfaceView()
         configureColorChangesStack()
         configureTitle()
