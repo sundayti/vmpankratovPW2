@@ -92,7 +92,7 @@ extension WishMakerViewController {
         scheduleWishesButton.layer.cornerRadius = Constants.radius
         scheduleWishesButton.titleLabel?.font = .systemFont(ofSize: Constants.buttonTextFontSize)
         
-        scheduleWishesButton.addTarget(self, action: #selector(addWishButtonPressed), for: .touchUpInside)
+        scheduleWishesButton.addTarget(self, action: #selector(scheduleWishesButtonPressed), for: .touchUpInside)
     }
     
     internal func configureSlider() {
