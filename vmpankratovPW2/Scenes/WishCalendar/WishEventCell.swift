@@ -16,7 +16,7 @@ final class WishEventCell: UICollectionViewCell {
         view.layer.cornerRadius = 16
         view.backgroundColor = .white
         view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.lightGray.cgColor
+        view.layer.borderColor = UIColor.black.cgColor
         return view
     }()
     
