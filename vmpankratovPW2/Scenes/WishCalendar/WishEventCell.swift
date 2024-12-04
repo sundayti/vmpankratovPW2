@@ -49,5 +49,14 @@ final class WishEventCell: UICollectionViewCell {
         return label
     }()
     
+    // MARK: - Lifecycle
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configureWrap()
+        configureTitleLabel()
+        configureDescriptionLabel()
+        configureStartDateLabel()
+        configureEndDateLabel()
+    }
 
 }
